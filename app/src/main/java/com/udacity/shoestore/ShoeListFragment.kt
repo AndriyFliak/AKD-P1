@@ -47,12 +47,10 @@ class ShoeListFragment : Fragment() {
 
         viewModel.shoeList.observe(viewLifecycleOwner) {
             for (shoe in viewModel.shoeList.value!!) {
-                val shoeView = ShoeBinding.inflate(layoutInflater)
-                shoeView.shoeNameText.text = shoe.name
-                shoeView.shoeCompanyText.text = shoe.company
-                shoeView.shoeSizeText.text = shoe.size.toString()
-                shoeView.shoeDescriptionText.text = shoe.description
-                binding.shoeList.addView(shoeView.root)
+                val shoeBinding = ShoeBinding.inflate(layoutInflater)
+                shoeBinding.shoe = shoe
+                shoeBinding.lifecycleOwner = this
+                binding.shoeList.addView(shoeBinding.root)
             }
         }
 

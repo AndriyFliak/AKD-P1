@@ -25,10 +25,16 @@ class ShoeDetailFragment : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
-            val name = binding.shoeNameEdit.text.toString()
-            val size = binding.shoeSizeEdit.text.toString()
-            val company = binding.shoeCompanyEdit.text.toString()
-            val description = binding.shoeDescriptionEdit.text.toString()
+            val name =
+                if (binding.shoeNameEdit.text.isNotEmpty()) binding.shoeNameEdit.text.toString() else "Name"
+            val size =
+                if (binding.shoeSizeEdit.text.isNotEmpty()) binding.shoeSizeEdit.text.toString() else "45.0"
+            val company =
+                if (binding.shoeCompanyEdit.text.isNotEmpty()) binding.shoeCompanyEdit.text.toString() else "Company"
+            val description =
+                if (binding.shoeDescriptionEdit.text.isNotEmpty()) binding.shoeDescriptionEdit.text.toString() else resources.getString(
+                    R.string.lorem_ipsum
+                )
             viewModel.addShoe(name, size, company, description)
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }

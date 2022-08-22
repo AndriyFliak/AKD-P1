@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- ConstraintLayout is simpler to implement for this layout, positioning Size TextView with LinearLayout would be complicated -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,36 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".LoginFragment">
 
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/email"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/emailEdit"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/emailEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/email"
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordEdit"
-        app:layout_constraintEnd_toEndOf="@+id/passwordEdit"
-        app:layout_constraintStart_toStartOf="@+id/passwordEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/emailText"
+        android:id="@+id/passwordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:layout_marginStart="16dp"
+        android:text="@string/password"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/emailEdit"
-        app:layout_constraintStart_toStartOf="@+id/passwordText" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/passwordEdit"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/passwordEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
@@ -47,22 +60,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/passwordText"
+        app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/emailEdit" />
-
-    <TextView
-        android:id="@+id/passwordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/password"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/passwordEdit"
-        app:layout_constraintEnd_toStartOf="@+id/passwordEdit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/loginButton"
@@ -87,5 +86,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/loginButton"
         app:layout_constraintTop_toBottomOf="@+id/passwordEdit" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="8dp"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="emailText,passwordText"
+        tools:layout_editor_absoluteX="105dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
