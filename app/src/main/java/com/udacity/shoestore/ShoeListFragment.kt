@@ -14,7 +14,7 @@ import com.udacity.shoestore.databinding.ShoeBinding
 class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
-    private val viewModel: ShoeListViewModel by activityViewModels()
+    private val viewModel: ShoesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,23 +27,21 @@ class ShoeListFragment : Fragment() {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
-        // The usage of an interface lets you inject your own implementation
+        // Used MenuHost instead of setHasOptionsMenu() as it is deprecated
         val menuHost: MenuHost = requireActivity()
-
-        // Add menu items without using the Fragment Menu APIs
-        // Note how we can tie the MenuProvider to the viewLifecycleOwner
-        // and an optional Lifecycle.State (here, RESUMED) to indicate when
-        // the menu should be visible
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                // Add menu items here
                 menuInflater.inflate(R.menu.menu, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
-                return true
-                //return menuItem.onNavDestinationSelected(findNavController())
+                return when (menuItem.itemId) {
+                    R.id.loginFragment -> {
+                        findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
+                        true
+                    }
+                    else -> false
+                }
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 

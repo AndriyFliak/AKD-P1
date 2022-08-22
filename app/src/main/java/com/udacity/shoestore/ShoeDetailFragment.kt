@@ -12,7 +12,7 @@ import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 class ShoeDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
-    private val viewModel: ShoeListViewModel by activityViewModels()
+    private val viewModel: ShoesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

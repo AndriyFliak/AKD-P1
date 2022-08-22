@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
 
-class ShoeListViewModel : ViewModel() {
+class ShoesViewModel : ViewModel() {
     private val _shoeList = MutableLiveData<MutableList<Shoe>>(mutableListOf())
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
@@ -15,6 +15,4 @@ class ShoeListViewModel : ViewModel() {
         _shoeList.value?.add(shoe)
         _shoeList.postValue(_shoeList.value)
     }
-
-
 }

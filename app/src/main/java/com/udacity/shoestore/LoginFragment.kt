@@ -16,6 +16,9 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // Binding class FragmentLoginBinding used to inflate the layout instead of DataBindingUtil
+        // as recommended by Android documentation
+        // https://developer.android.com/reference/android/databinding/DataBindingUtil#inflate_1
         binding = FragmentLoginBinding.inflate(inflater)
 
         binding.loginButton.setOnClickListener {
