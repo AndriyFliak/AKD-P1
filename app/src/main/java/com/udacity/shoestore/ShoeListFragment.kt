@@ -1,21 +1,20 @@
-package com.udacity.shoestore.shoelist
+package com.udacity.shoestore
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
-import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.databinding.ShoeBinding
 
 class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
-    private lateinit var viewModel: ShoeListViewModel
+    private val viewModel: ShoeListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,7 +22,6 @@ class ShoeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShoeListBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this)[ShoeListViewModel::class.java]
 
         binding.addShoeButton.setOnClickListener {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
@@ -48,6 +46,17 @@ class ShoeListFragment : Fragment() {
                 //return menuItem.onNavDestinationSelected(findNavController())
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        viewModel.shoeList.observe(viewLifecycleOwner) {
+            for (shoe in viewModel.shoeList.value!!) {
+                val shoeView = ShoeBinding.inflate(layoutInflater)
+                shoeView.shoeNameText.text = shoe.name
+                shoeView.shoeCompanyText.text = shoe.company
+                shoeView.shoeSizeText.text = shoe.size.toString()
+                shoeView.shoeDescriptionText.text = shoe.description
+                binding.shoeList.addView(shoeView.root)
+            }
+        }
 
         return binding.root
     }
