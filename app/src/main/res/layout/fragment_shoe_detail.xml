@@ -99,7 +99,9 @@
             app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toBottomOf="@+id/shoeNameEdit" />
 
-        <!-- `` + shoe.size looks ugly, but all other solutions didn't work -->
+        <!-- `` + shoe.size looks ugly, but all other solutions didn't work.
+        Tried custom getter/setter for size, but that didn't help.
+        https://stackoverflow.com/a/42260779 -->
         <EditText
             android:id="@+id/shoeSizeEdit"
             style="@style/editTextStyle"

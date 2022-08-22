@@ -28,6 +28,7 @@ class ShoeListFragment : Fragment() {
         }
 
         // Used MenuHost instead of setHasOptionsMenu() as it is deprecated
+        // https://developer.android.com/jetpack/androidx/releases/activity#1.4.0-alpha01
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
