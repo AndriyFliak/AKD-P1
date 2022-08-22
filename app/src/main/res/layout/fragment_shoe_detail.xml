@@ -99,9 +99,6 @@
             app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toBottomOf="@+id/shoeNameEdit" />
 
-        <!-- `` + shoe.size looks ugly, but all other solutions didn't work.
-        Tried custom getter/setter for size, but that didn't help.
-        https://stackoverflow.com/a/42260779 -->
         <EditText
             android:id="@+id/shoeSizeEdit"
             style="@style/editTextStyle"
@@ -111,7 +108,7 @@
             android:hint="@string/size"
             android:importantForAutofill="no"
             android:inputType="numberDecimal"
-            android:text="@={`` + shoe.size}"
+            android:text="@={com.udacity.shoestore.models.Shoe.Converter.doubleToString(shoe.size)}"
             app:layout_constraintBottom_toTopOf="@+id/shoeDescriptionEdit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/barrier"

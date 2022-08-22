@@ -13,7 +13,7 @@ import com.udacity.shoestore.models.Shoe
 class ShoeDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeDetailBinding
-    private val viewModel: ShoesViewModel by activityViewModels()
+    private val shoesViewModel: ShoesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,26 +22,26 @@ class ShoeDetailFragment : Fragment() {
         binding = FragmentShoeDetailBinding.inflate(inflater)
 
         with(binding) {
-            lifecycleOwner = lifecycleOwner
+            lifecycleOwner = this@ShoeDetailFragment
             shoe = Shoe("", 0.0, "", "")
-            viewModel = viewModel
+            viewModel = shoesViewModel
         }
 
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
 
-        viewModel.eventCancel.observe(viewLifecycleOwner) { canceled ->
+        shoesViewModel.eventCancel.observe(viewLifecycleOwner) { canceled ->
             if (canceled) {
                 findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
-                viewModel.onEventCancelComplete()
+                shoesViewModel.onEventCancelComplete()
             }
         }
 
-        viewModel.eventSave.observe(viewLifecycleOwner) { saved ->
+        shoesViewModel.eventSave.observe(viewLifecycleOwner) { saved ->
             if (saved) {
                 findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
-                viewModel.onEventSaveComplete()
+                shoesViewModel.onEventSaveComplete()
             }
         }
 
