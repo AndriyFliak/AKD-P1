@@ -2,4 +2,8 @@
 <resources>
     <dimen name="defaultMargin">16dp</dimen>
     <dimen name="smallMargin">8dp</dimen>
+    <dimen name="headerTextSize">24sp</dimen>
+    <dimen name="formTextSize">20sp</dimen>
+    <dimen name="textSize">16sp</dimen>
+    <dimen name="smallTextSize">12sp</dimen>
 </resources>

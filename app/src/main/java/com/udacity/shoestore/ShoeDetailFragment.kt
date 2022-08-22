@@ -21,9 +21,11 @@ class ShoeDetailFragment : Fragment() {
     ): View {
         binding = FragmentShoeDetailBinding.inflate(inflater)
 
-        binding.lifecycleOwner = this
-        binding.shoe = Shoe("", 0.0, "", "")
-        binding.viewModel = viewModel
+        with(binding) {
+            lifecycleOwner = lifecycleOwner
+            shoe = Shoe("", 0.0, "", "")
+            viewModel = viewModel
+        }
 
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
