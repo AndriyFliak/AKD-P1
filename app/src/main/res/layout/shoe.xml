@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -8,10 +9,10 @@
         android:id="@+id/shoeNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/name" />
 
     <TextView
         android:id="@+id/shoeCompanyLabel"
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Company:"
+        android:text="@string/company"
         app:layout_constraintBottom_toTopOf="@+id/shoeDescriptionText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shoeNameText" />
@@ -30,35 +31,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="48.5"
         app:layout_constraintBottom_toTopOf="@+id/shoeDescriptionText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shoeNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/shoeNameText"
+        tools:text="48.5" />
 
     <TextView
         android:id="@+id/shoeDescriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Description" />
 
     <TextView
         android:id="@+id/shoeCompanyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Company"
         app:layout_constraintBaseline_toBaselineOf="@+id/shoeCompanyLabel"
-        app:layout_constraintStart_toEndOf="@+id/shoeCompanyLabel" />
+        app:layout_constraintStart_toEndOf="@+id/shoeCompanyLabel"
+        tools:text="Company" />
 
     <TextView
         android:id="@+id/shoeSizeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="Size"
+        android:text="@string/size"
         app:layout_constraintBaseline_toBaselineOf="@+id/shoeSizeText"
         app:layout_constraintEnd_toStartOf="@+id/shoeSizeText" />
 
