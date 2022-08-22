@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!-- ConstraintLayout should be better as LinearLayout implementation would require 3 nested LinearLayouts -->
+<!-- Haven't used <layout> tag here and other screens as databinding is not needed on these screens -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

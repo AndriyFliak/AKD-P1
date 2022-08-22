@@ -10,9 +10,28 @@ class ShoesViewModel : ViewModel() {
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
 
-    fun addShoe(name: String, size: String, company: String, description: String) {
-        val shoe = Shoe(name, size.toDoubleOrNull() ?: 0.0, company, description)
+    private val _eventSave = MutableLiveData(false)
+    val eventSave: LiveData<Boolean>
+        get() = _eventSave
+
+    fun onEventSave(shoe: Shoe) {
+        _eventSave.value = true
         _shoeList.value?.add(shoe)
-        _shoeList.postValue(_shoeList.value)
+    }
+
+    fun onEventSaveComplete() {
+        _eventSave.value = false
+    }
+
+    private val _eventCancel = MutableLiveData(false)
+    val eventCancel: LiveData<Boolean>
+        get() = _eventCancel
+
+    fun onEventCancel() {
+        _eventCancel.value = true
+    }
+
+    fun onEventCancelComplete() {
+        _eventCancel.value = false
     }
 }
