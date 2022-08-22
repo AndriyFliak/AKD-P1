@@ -17,11 +17,10 @@
 
         <TextView
             android:id="@+id/shoeNameText"
+            style="@style/labelTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto"
             android:text="@{shoe.name}"
-            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +29,10 @@
 
         <TextView
             android:id="@+id/shoeCompanyText"
+            style="@style/labelTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/smallMargin"
             android:fontFamily="@font/roboto"
             android:text="@{shoe.company}"
             android:textAllCaps="true"
@@ -44,20 +44,26 @@
 
         <TextView
             android:id="@+id/shoeSizeText"
+            style="@style/labelTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/size_border"
             android:padding="4dp"
             android:text="@{String.valueOf(shoe.size)}"
-            app:layout_constraintBaseline_toBaselineOf="@+id/shoeNameText"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/shoeCompanyText"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/shoeNameText"
             tools:text="48.5" />
 
         <TextView
             android:id="@+id/shoeDescriptionText"
+            style="@style/labelTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/smallMargin"
             android:text="@{shoe.description}"
             android:textAlignment="center"
             android:textSize="12sp"
@@ -69,8 +75,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:layout_marginBottom="@dimen/smallMargin"
             android:background="?android:attr/listDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/shoeDescriptionText" />
